@@ -46,3 +46,20 @@ And(/^response has a valid body$/) do
   assert_not_nil(data['body'])
 end
 
+
+Given(/^I amend an existing post with valid id$/) do
+  step 'I request a random user'
+  @valid_id = @user_id.to_s
+  @title = 'I have added a title'
+  @body = 'I have added a body'
+  @response = RestClient.put @url.base_url + '/posts/' + '2', {:title => '123456',
+                                                               :body => '123456'}
+  puts @response
+  puts @response.code
+end
+
+When(/^I retrieve the post$/) do
+  @response = RestClient.get @url.base_url + '/posts/' + '2'
+  puts @response
+  puts @response.code
+end

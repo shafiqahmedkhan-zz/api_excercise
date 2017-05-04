@@ -13,3 +13,11 @@ Feature:
     Then response has a valid id
     And response has a valid title
     And response has a valid body
+
+  Scenario: Creating a post
+    Given I amend an existing post with valid id
+    Then I get a 200 status code
+    When I retrieve the post
+    Then I get a 200 status code
+    And the message has been amended correctly
+
